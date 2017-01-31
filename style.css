@@ -1,0 +1,117 @@
+*{
+  margin: 0;
+  padding: 0;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html{
+  /* Makes 1 rem unit equal to 10px */
+  font-size: 62.5%;
+  font-family: "Roboto", Sans-Serif;
+}
+
+body{
+  background: #e5e5e5;
+  padding: 2rem;
+}
+
+body * ~ *{
+  /* adds a top margin to any element that has a sibling element above it */
+  margin-top: 4rem;
+}
+
+.page{
+  margin: auto;
+  max-width: 80rem;
+}
+
+.info p{
+  font-size: 3vw;
+  text-align: center;
+}
+
+.box{
+  background: #551A8B;
+  border-radius: 1px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center; /* align child elements horizontally */
+  align-items: center; /* align child elements vertically */
+}
+
+.box:nth-of-type(3){
+  background: #b3c833;
+}
+
+.box:nth-of-type(4){
+  background: #ce5043;
+}
+
+.box p{
+  margin: auto;
+  color: white;
+  text-align: center;
+  font-size: 8vw; /* Sets the font-size to 8% of the Viewport's width, for responsive text sizing */
+}
+
+@media screen and (min-width: 840px) {
+  .box p{
+    font-size: 6.72rem; /* Sets the maximum size of the text for when the page exceeds 960px wide */
+  }
+  .info p{
+  font-size: 2.52rem;
+  }
+}
+
+/* This is where the magic happens. The height is based on a calcultion of the current viewport's width. If you had no borders, margins, or padding, this value would be a sinch to calculate! It's just the ratio's height divided by its width. For example, 16:9 would be:
+
+9/16 = 56.25
+
+Set the units to Viewport Width (56.25vw) and you're all set!
+
+However, most real world situations also have to account for borders, margins, and padding, so.... things get complicated. The element height becomes a calc() function with the following equation:
+
+(100vw - [total extra width]) * [ratio width percentage in decimal]
+
+OR
+
+(100vw - [total extra width]) * ([ratio height] / [ratio width])
+
+So... 100% of the veiwport's width, minus the borders, margins, and padding for both left and right sides, multiplied by the proper ratio height percentage. In this pen, I have padding on the body set to 2rem. Both left and right sides have to be totalled, so I get 4rem. I then plug in the ratio I want (16:9) and we get this:
+
+calc((100vw - 4rem) * (9/16))
+
+This gives us a great dynamic height for all mobile phone and tablet sized sites, where your content is right up against the viewport. But what about when your site loads on a desktop? Most sites have a max-width set on one of their main content elements so that the content stays within an easy to read line (about 80 characters). In this situation though, the viewport extends past that, all the way to the edge of their browser window. What do we do then? Max-height.
+
+In this pen, my "page" won't grow any wider than 800px. Since I have my "pictures" set to 100% width, they'll fill the entire 800px. All we have to do now is multiply that width by our ratio number of 56.25... or we could just use another calc() equation:
+
+max-height: calc(800px * 9/16);
+
+In this case, we get a maximum height of 450px, locking our widescreen image/content to a 16:9 ratio no matter how wide the viewport is.
+
+You can see the finished code below, and the examples on the right. This is just the tip of the iceberg though, as there are 4 types in the Viewport unit spec, and my pen only uses one of them.
+
+To view the examples on your mobile device without all of the extra codepen windows, go to:
+
+http://codepen.io/TechnoBishop/debug/LEVPJw
+
+*/
+
+.ratio-16-9{
+  width: 100%;
+  height: calc((100vw - 4rem) * (9/16));
+  max-height: calc(800px * 9/16);
+}
+
+.ratio-4-3{
+  width: 100%;
+  height: calc((100vw - 4rem) * (3/4));
+  max-height: calc(800px * 3/4);
+}
+
+.ratio-21-9{
+  width: 100%;
+  height: calc((100vw - 4rem) * (9/21));
+  max-height: calc(800px * 9/21);
+}
