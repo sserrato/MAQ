@@ -50,20 +50,3 @@ window.onload = function(){
   });
 
 }
-//
-// var timeAnimation = 500;
-//      var quoteContainer = $('#quoteContainer');
-//      //fade out animation with callback
-//      quoteContainer.fadeOut(timeAnimation, function(){
-//        quoteContainer.html('');
-//        quoteContainer.append('<p>'+newQuoteText+'</p>'+'<p id="quoteGenius">'+'-								'+newQuoteGenius+'</p>');
-//
-//        //fadein animation.
-//        quoteContainer.fadeIn(timeAnimation);
-//      });
-//
-//      break;
-
-//  http://codepen.io/hkfoster/pen/qbBEF
-//https://api.jquery.com/ready/
-//http://codepen.io/kkoutoup/pen/zxmGLE
