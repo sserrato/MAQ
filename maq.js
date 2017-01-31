@@ -1,4 +1,8 @@
-var textArea = ["Everything we hear is an opinion, not a fact. Everything we see is a perspective, not the truth.\n" ,
+var array = [1,2,3,4,5]
+var array = ["presed", "dismissed"]
+
+var textArea =
+["Everything we hear is an opinion, not a fact. Everything we see is a perspective, not the truth.\n" ,
 
 "You have power over your mind - not outside events. Realize this, and you will find strength.\n" ,
 
@@ -35,11 +39,8 @@ function selectQuote(textArea){
 
 window.onload = function(){
   var sourceLength = textArea.length;
-    console.log(sourceLength+" yaasssss");
   var randomNumber = Math.floor(Math.random()*sourceLength);
-    console.log(randomNumber)
   var serveQuote = textArea[randomNumber];
-    console.log(serveQuote);
   var timeAnimation = 500;
 
   var quoteContainer = $('#quoteContainer');
